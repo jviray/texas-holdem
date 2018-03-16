@@ -1,11 +1,12 @@
 import unittest
 import deck as d
+import game as g 
 
 class DeckClassTestCase(unittest.TestCase):
 	"""Tests for Deck class."""
 	
 	def setUp(self):
-		"""Setup a deck to be used in all test methods."""
+		"""Create cards to be used in all test methods."""
 		self.cards = d.Deck().cards
 
 	def counter(self, targets, num_of_each, cards): # !!!
@@ -61,5 +62,18 @@ class DeckClassTestCase(unittest.TestCase):
 			return True
 		
 		self.assertEqual(check_proper_num_value(self.cards), True)
+
+class GameClassTestCase(unittest.TestCase):
+	"""Tests for Game class."""
+
+	def setUp(self):
+		"""Set up a game to be used in all test methods."""
+		self.game = g.Game()
+		self.deck = self.game.deck
+
+	def test_gamedeck_shuffled(self):
+		"""Check if deck is shuffled before being dealt."""
+		self.game.shuffle_deck()
+		self.assertNotEqual(str(self.deck), str(d.Deck()))
 		
 unittest.main()

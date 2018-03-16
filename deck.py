@@ -9,6 +9,18 @@ class Deck():
 					         for rank in self.ranks
 		]
 
+	def __str__(self):
+		"""Modify str method to display Deck as a list of tuples."""
+		result = '['
+		for i, card in enumerate(self.cards):
+			if i == 0:
+				result += str(card)
+			else:
+				result += ', ' + str(card)
+		result += ']'
+		return result
+
+
 class Card(): # !!! "tuple object has no attr 'rank'" Use classes when access attr
 	"""Represents a playing card."""
 	
@@ -19,6 +31,10 @@ class Card(): # !!! "tuple object has no attr 'rank'" Use classes when access at
 		self.num = self.give_numerical_rank(self.rank)
 		# !!! Easier to count for our test; can't search ion class obj. easily
 		self.attributes = (self.rank, self.suit, self.num) 
+
+	def __str__(self):
+		"""Modify str method to display Card attributes in a tuple."""
+		return '(' + self.rank + ', ' + self.suit + ', ' + str(self.num) + ')'	
 	
 	def give_numerical_rank(self, rank):
 		"""Helper method: Gives numerical value to be assigned to attribute."""
