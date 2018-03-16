@@ -6,21 +6,15 @@ class DeckClassTestCase(unittest.TestCase):
 	
 	def setUp(self):
 		"""Setup a deck to be used in all test methods."""
-		self.deck = d.Deck()
-		self.cards = self.deck.cards
+		self.cards = d.Deck().cards
 
 	def counter(self, targets, num_of_each, cards): # !!!
-		"""Helper method: Check if proper number of each target is present."""
-		counts = []
-			 
+		"""Helper method: Check if proper number of each target is present."""			 
 		for target in targets:
 			count = 0
 			for card in cards:
 				if target in card.attributes:
 					count += 1
-			counts.append(count)
-			
-		for count in counts:
 			if count != num_of_each:
 				return False
 			
