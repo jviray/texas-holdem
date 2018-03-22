@@ -1,8 +1,8 @@
 class Deck():
-	"""Represents standard 52-card deck of playing cards."""
+	"""Represents a standard 52-card deck of playing cards."""
 	
 	def __init__(self):
-		"""Initialize a deck with attributes."""
+		"""Initialize a deck with 4 suits and 13 ranks."""
 		self.suits = ['H', 'D', 'C', 'S']
 		self.ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 		self.cards = [Card(rank, suit) for suit in self.suits 

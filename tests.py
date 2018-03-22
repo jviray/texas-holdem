@@ -68,12 +68,29 @@ class GameClassTestCase(unittest.TestCase):
 
 	def setUp(self):
 		"""Set up a game to be used in all test methods."""
-		self.game = g.Game()
+		self.game = g.Game(2) # Our first MVP will only support two players.
 		self.deck = self.game.deck
+		self.players = self.game.players
 
 	def test_gamedeck_shuffled(self):
-		"""Check if deck is shuffled before being dealt."""
+		"""Test if deck is shuffled before being dealt."""
 		self.game.shuffle_deck()
 		self.assertNotEqual(str(self.deck), str(d.Deck()))
+
+	def test_cards_dealt_to_all_players(self):
+		"""Test that every player is dealt five cards."""
+		self.game.deal()
+
+		def check_five_cards_each(players):
+			"""Helper test method: Checks that each player holds five cards."""
+			for player in players:
+				if len(player.cards) != 5:
+					return False
+
+			return True
+
+		self.assertEqual(check_five_cards_each(self.players), True)
+
+	# Determine winner
 		
 unittest.main()
